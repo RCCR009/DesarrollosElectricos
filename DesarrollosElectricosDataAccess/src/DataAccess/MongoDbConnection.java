@@ -1,14 +1,17 @@
 package DataAccess;
 
+import java.util.logging.Level;
+
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 
 public class MongoDbConnection {
 
-	public MongoDbConnection(String host, int port) {//se le pasa el host y el puerto al que se le quiere pegar// eso es por si se tiene la coneccion en un puerto diferente
+	public MongoDbConnection(String host, int port) {
 		
-		Mongo = new MongoClient(host, port);//se levanta cliente de mongo y se esta pegando a la base
-		MongoDataBase = Mongo.getDatabase("mycustomers");//	dato quemado se puede meter desde un xml un Json o lo que sea	
+		Mongo = new MongoClient(host, port);
+		MongoDataBase = Mongo.getDatabase("dataBasenamehere");
+		java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(Level.SEVERE);
 	}
 	
 	private MongoClient Mongo;

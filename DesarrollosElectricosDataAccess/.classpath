@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="testsrc"/>
 	<classpathentry kind="lib" path="C:/dev/java/cenfotec/testing/junit/gson-2.2.2.jar"/>
 	<classpathentry kind="lib" path="C:/dev/java/cenfotec/testing/junit/junit-4.12.jar"/>
 	<classpathentry kind="lib" path="C:/dev/java/cenfotec/testing/junit/mongo-java-driver-3.7.1.jar"/>

@@ -6,27 +6,26 @@ import java.util.List;
 import org.bson.Document;
 
 import com.google.gson.Gson;
+import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCollection;
 
 
-public class MongoDbTransaction {//metodos genericos de mongo (si se implementa sigelton debe ser aqui)
+public class MongoDbTransaction {
 
-	private MongoDbConnection MongoConnection;// se puede hacer de esta clase una estatica y lo inicializa una unica vez
+	private MongoDbConnection MongoConnection;
 	
 	public MongoDbTransaction() {
 		MongoConnection = new MongoDbConnection("localhost" , 27017);
 	}
 	
 	public void InsertDocuement(Object obj, String collectionName)
-	{
+	{	
 		MongoCollection<Document> collection = MongoConnection.getMongoDataBase().getCollection(collectionName);//gson docuemten que espera un json
 		
 		Gson gson = new Gson();
 	    
-		String result = gson.toJson(obj);
-	      
-	    Document dbObject = gson.fromJson(result, Document.class);		
-	    
+		String result = gson.toJson(obj);	      
+	    Document dbObject = gson.fromJson(result, Document.class);		    
 	    collection.insertOne(dbObject);// crea un id unico ui
 	}
 	
@@ -48,6 +47,50 @@ public class MongoDbTransaction {//metodos genericos de mongo (si se implementa 
         }
 		
 		return results;
+	}
+	
+	public void UpdateDocument(Object obj, String collectionName, String nameValue,Object value) {
+		MongoCollection<Document> collection = MongoConnection.getMongoDataBase().getCollection(collectionName);
+		
+		BasicDBObject parameter = new BasicDBObject(nameValue,value);		
+		Gson gson = new Gson();
+		String result = gson.toJson(obj);	      
+	    Document dbObject = gson.fromJson(result, Document.class);
+		
+		BasicDBObject updateObj = new BasicDBObject();
+		updateObj.put("$set", dbObject);
+		
+		collection.updateOne(parameter, updateObj);	
+		
+	}
+	
+	public Object RetriveDocument(Object obj, String collectionName) {
+		Object myObj = new Object();
+		MongoCollection<Document> collection = MongoConnection.getMongoDataBase().getCollection(collectionName);
+		Gson gson = new Gson(); 
+		String jsonObject = gson.toJson(obj);	      
+	    Document dbObject = gson.fromJson(jsonObject, Document.class);
+
+	    Document myDoc = collection.find(dbObject).first();
+	    
+	    String result = gson.toJson(myDoc);			
+		
+		myObj = ((Object)gson.fromJson(result, obj.getClass()));
+	    
+	    return myObj;
+	}
+	
+	public void DeleteDocument(Object obj, String collectionName) {
+		MongoCollection<Document> collection = MongoConnection.getMongoDataBase().getCollection(collectionName);
+		Gson gson = new Gson(); 
+		String jsonObject = gson.toJson(obj);	      
+	    Document dbObject = gson.fromJson(jsonObject, Document.class);
+
+	    collection.deleteOne(dbObject);
+	}
+	
+	public void closeConnection() {
+		MongoConnection.getMongo().close();
 	}
 	
 }

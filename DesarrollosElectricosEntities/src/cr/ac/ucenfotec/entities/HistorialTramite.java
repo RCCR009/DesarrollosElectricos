@@ -2,7 +2,7 @@ package cr.ac.ucenfotec.entities;
 
 import java.sql.Date;
 
-public class historialTramite {
+public class HistorialTramite {
 	private Tramite tramite;
 	private Usuario usuarioInicio;
 	private Estado estado;
@@ -10,11 +10,11 @@ public class historialTramite {
 	private Date fechaInicio;
 	private Date fechaFin;
 	
-	public historialTramite() {
+	public HistorialTramite() {
 		
 	}
 	
-	public historialTramite(Tramite tramite, Usuario usuarioInicio, Estado estado,
+	public HistorialTramite(Tramite tramite, Usuario usuarioInicio, Estado estado,
 			int tareaCompletadas, Date fechaInicio, Date fechaFin) {
 		super();
 		this.tramite = tramite;

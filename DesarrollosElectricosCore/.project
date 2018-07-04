@@ -3,6 +3,8 @@
 	<name>DesarrollosElectricosCore</name>
 	<comment></comment>
 	<projects>
+		<project>DesarrollosElectricosDataAccess</project>
+		<project>DesarrollosElectricosEntities</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

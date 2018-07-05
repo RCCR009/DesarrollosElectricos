@@ -1,17 +1,17 @@
 package cr.ac.ucenfotec.entities;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class HistorialTareas {
 	private Tarea tarea;
 	private Usuario usuario;
-	private Date FechaFin;
+	private LocalDate FechaFin;
 	
 	public HistorialTareas() {
 		
 	}
 	
-	public HistorialTareas(Tarea tarea, Usuario usuario, Date fechaFin) {
+	public HistorialTareas(Tarea tarea, Usuario usuario, LocalDate fechaFin) {
 		super();
 		this.tarea = tarea;
 		this.usuario = usuario;
@@ -34,11 +34,11 @@ public class HistorialTareas {
 		this.usuario = usuario;
 	}
 
-	public Date getFechaFin() {
+	public LocalDate getFechaFin() {
 		return FechaFin;
 	}
 
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(LocalDate fechaFin) {
 		FechaFin = fechaFin;
 	}
 

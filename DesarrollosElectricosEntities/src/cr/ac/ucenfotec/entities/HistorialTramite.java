@@ -1,21 +1,21 @@
 package cr.ac.ucenfotec.entities;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class HistorialTramite {
 	private Tramite tramite;
 	private Usuario usuarioInicio;
 	private Estado estado;
 	private int tareaCompletadas;
-	private Date fechaInicio;
-	private Date fechaFin;
+	private LocalDate fechaInicio;
+	private LocalDate fechaFin;
 	
 	public HistorialTramite() {
 		
 	}
 	
 	public HistorialTramite(Tramite tramite, Usuario usuarioInicio, Estado estado,
-			int tareaCompletadas, Date fechaInicio, Date fechaFin) {
+			int tareaCompletadas, LocalDate fechaInicio, LocalDate fechaFin) {
 		super();
 		this.tramite = tramite;
 		this.usuarioInicio = usuarioInicio;
@@ -57,19 +57,19 @@ public class HistorialTramite {
 		this.tareaCompletadas = tareaCompletadas;
 	}
 
-	public Date getFechaInicio() {
+	public LocalDate getFechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public Date getFechaFin() {
+	public LocalDate getFechaFin() {
 		return fechaFin;
 	}
 
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 

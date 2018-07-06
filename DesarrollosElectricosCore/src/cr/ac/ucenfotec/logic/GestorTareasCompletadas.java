@@ -3,19 +3,19 @@ package cr.ac.ucenfotec.logic;
 import java.util.ArrayList;
 
 import DataAccess.MongoDbTransaction;
-import cr.ac.ucenfotec.entities.HistorialTramite;
+import cr.ac.ucenfotec.entities.TareasCompletadas;
 
-public class GestorHistorialTramite {
+public class GestorTareasCompletadas {
 	
 	MongoDbTransaction transaction;
 	
-	public GestorHistorialTramite() {
+	public GestorTareasCompletadas() {
 		this.transaction = new MongoDbTransaction();
 	}
 	
 	public void create(Object obj) {
 		try {
-			transaction.InsertDocuement(obj, "historialtramites");	
+			transaction.InsertDocuement(obj, "tareascompletadas");	
 		}catch(Exception e) {
 			throw e;
 		}
@@ -23,7 +23,7 @@ public class GestorHistorialTramite {
 	
 	public ArrayList<Object> retriveAll(Object obj) {
 		try {
-			return transaction.GetData(obj, "historialtramites");		 
+			return transaction.GetData(obj, "tareascompletadas");		 
 		}catch(Exception e) {
 			throw e;
 		}
@@ -31,7 +31,7 @@ public class GestorHistorialTramite {
 	
 	public Object retrive(Object obj) {
 		try {
-			return transaction.RetriveDocument(obj, "historialtramites");
+			return transaction.RetriveDocument(obj, "tareascompletadas");
 		}catch(Exception e) {
 			throw e;
 		}
@@ -39,11 +39,11 @@ public class GestorHistorialTramite {
 	
 	public void update(Object obj) {
 		try {
-			HistorialTramite historialTramite = new HistorialTramite();
-			HistorialTramite ht = (HistorialTramite)obj;
-			historialTramite.setTipoTramite(ht.getTipoTramite());
+			TareasCompletadas tareaCompletada = new TareasCompletadas();
+			TareasCompletadas tc = (TareasCompletadas)obj;
+			tareaCompletada.setId(tc.getId());
 			
-			transaction.UpdateDocument(obj, "historialtramites", "id",historialTramite);
+			transaction.UpdateDocument(obj, "tareascompletadas", "id",tareaCompletada);
 		}catch(Exception e) {
 			throw e;
 		}
@@ -52,7 +52,7 @@ public class GestorHistorialTramite {
 	
 	public void delete(Object obj) {
 		try {
-			transaction.DeleteDocument(obj, "historialtramites");
+			transaction.DeleteDocument(obj, "tareascompletadas");
 		}catch(Exception e) {
 			throw e;
 		}

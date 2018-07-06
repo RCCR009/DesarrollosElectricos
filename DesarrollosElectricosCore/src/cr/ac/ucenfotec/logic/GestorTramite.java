@@ -14,7 +14,7 @@ public class GestorTramite {
 	
 	public void create(Object obj) {
 		try {
-			transaction.InsertDocuement(obj, "Tramites");	
+			transaction.InsertDocuement(obj, "tramites");	
 		}catch(Exception e) {
 			throw e;
 		}
@@ -22,7 +22,7 @@ public class GestorTramite {
 	
 	public ArrayList<Object> retriveAll(Object obj) {
 		try {
-			return transaction.GetData(obj, "Tramites");		 
+			return transaction.GetData(obj, "tramites");		 
 		}catch(Exception e) {
 			throw e;
 		}
@@ -30,7 +30,7 @@ public class GestorTramite {
 	
 	public Object retrive(Object obj) {
 		try {
-			return transaction.RetriveDocument(obj, "Tramites");
+			return transaction.RetriveDocument(obj, "tramites");
 		}catch(Exception e) {
 			throw e;
 		}
@@ -42,7 +42,7 @@ public class GestorTramite {
 			Tramite t = (Tramite)obj;
 			tramite.setId(t.getId());
 			
-			transaction.UpdateDocument(obj, "Tramites", "id",tramite);
+			transaction.UpdateDocument(obj, "tramites", "id",tramite);
 		}catch(Exception e) {
 			throw e;
 		}
@@ -51,7 +51,7 @@ public class GestorTramite {
 	
 	public void delete(Object obj) {
 		try {
-			transaction.DeleteDocument(obj, "Tramites");
+			transaction.DeleteDocument(obj, "tramites");
 		}catch(Exception e) {
 			throw e;
 		}

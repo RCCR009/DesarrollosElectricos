@@ -2,20 +2,30 @@ package cr.ac.ucenfotec.entities;
 
 import java.time.LocalDate;
 
-public class HistorialTareas {
+public class TareasCompletadas {
+	private int id;
 	private Tarea tarea;
 	private Usuario usuario;
 	private LocalDate FechaFin;
 	
-	public HistorialTareas() {
+	public TareasCompletadas() {
 		
 	}
-	
-	public HistorialTareas(Tarea tarea, Usuario usuario, LocalDate fechaFin) {
+
+	public TareasCompletadas(int id, Tarea tarea, Usuario usuario, LocalDate fechaFin) {
 		super();
+		this.id = id;
 		this.tarea = tarea;
 		this.usuario = usuario;
 		FechaFin = fechaFin;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Tarea getTarea() {
@@ -44,7 +54,8 @@ public class HistorialTareas {
 
 	@Override
 	public String toString() {
-		return "historialTareas [tarea=" + tarea + ", usuario=" + usuario + ", FechaFin=" + FechaFin + "]";
+		return "TareasCompletadas [id=" + id + ", tarea=" + tarea + ", usuario=" + usuario + ", FechaFin=" + FechaFin
+				+ "]";
 	}
 
 }

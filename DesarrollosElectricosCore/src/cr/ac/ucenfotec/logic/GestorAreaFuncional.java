@@ -2,19 +2,19 @@ package cr.ac.ucenfotec.logic;
 
 import java.util.ArrayList;
 import DataAccess.MongoDbTransaction;
-import cr.ac.ucenfotec.entities.Actividad;
+import cr.ac.ucenfotec.entities.AreaFuncional;
 
-public class GestorActividad{
+public class GestorAreaFuncional{
 	
 	MongoDbTransaction transaction;
 	
-	GestorActividad(){
+	GestorAreaFuncional(){
 		transaction = new MongoDbTransaction();
 	}
 	
 	public void create(Object obj) {
 		try {
-			transaction.InsertDocuement(obj, "actividades");	
+			transaction.InsertDocuement(obj, "areasfuncionales");	
 		}catch(Exception e) {
 			throw e;
 		}
@@ -22,7 +22,7 @@ public class GestorActividad{
 	
 	public ArrayList<Object> retriveAll(Object obj) {
 		try {
-			return transaction.GetData(obj, "actividades");		 
+			return transaction.GetData(obj, "areasfuncionales");		 
 		}catch(Exception e) {
 			throw e;
 		}
@@ -30,7 +30,7 @@ public class GestorActividad{
 	
 	public Object retrive(Object obj) {
 		try {
-			return transaction.RetriveDocument(obj, "actividades");
+			return transaction.RetriveDocument(obj, "areasfuncionales");
 		}catch(Exception e) {
 			throw e;
 		}
@@ -38,11 +38,11 @@ public class GestorActividad{
 	
 	public void update(Object obj) {
 		try {
-			Actividad actividad = new Actividad();
-			Actividad t = (Actividad)obj;
-			actividad.setId(t.getId()); 
+			AreaFuncional areaFuncional = new AreaFuncional();
+			AreaFuncional af = (AreaFuncional)obj;
+			areaFuncional.setId(af.getId()); 
 			
-			transaction.UpdateDocument(obj, "actividades","id",actividad);
+			transaction.UpdateDocument(obj, "areasfuncionales","id",areaFuncional);
 		}catch(Exception e) {
 			throw e;
 		}	
@@ -50,7 +50,7 @@ public class GestorActividad{
 	
 	public void delete(Object obj) {
 		try {
-			transaction.DeleteDocument(obj, "actividades");
+			transaction.DeleteDocument(obj, "areasfuncionales");
 		}catch(Exception e) {
 			throw e;
 		}

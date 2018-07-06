@@ -15,7 +15,7 @@ public class GestorUsuario {
 	
 	public void create(Object obj) {
 		try {
-			transaction.InsertDocuement(obj, "Usuarios");	
+			transaction.InsertDocuement(obj, "usuarios");	
 		}catch(Exception e) {
 			throw e;
 		}
@@ -31,7 +31,7 @@ public class GestorUsuario {
 	
 	public Object retrive(Object obj) {
 		try {
-			return transaction.RetriveDocument(obj, "Usuarios");
+			return transaction.RetriveDocument(obj, "usuarios");
 		}catch(Exception e) {
 			throw e;
 		}
@@ -43,7 +43,7 @@ public class GestorUsuario {
 			Usuario u = (Usuario)obj;
 			usuario.setId(u.getId());
 			
-			transaction.UpdateDocument(obj, "Usuarios", "id",usuario);
+			transaction.UpdateDocument(obj, "usuarios", "id",usuario);
 		}catch(Exception e) {
 			throw e;
 		}
@@ -52,7 +52,7 @@ public class GestorUsuario {
 	
 	public void delete(Object obj) {
 		try {
-			transaction.DeleteDocument(obj, "Usuarios");
+			transaction.DeleteDocument(obj, "usuarios");
 		}catch(Exception e) {
 			throw e;
 		}

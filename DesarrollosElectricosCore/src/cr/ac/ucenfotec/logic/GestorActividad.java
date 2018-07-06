@@ -8,8 +8,8 @@ public class GestorActividad{
 	
 	MongoDbTransaction transaction;
 	
-	GestorActividad(){
-		transaction = new MongoDbTransaction();
+	public GestorActividad(){
+		this.transaction = new MongoDbTransaction();
 	}
 	
 	public void create(Object obj) {

@@ -12,6 +12,7 @@ public class AreaFuncional {
 	public AreaFuncional(int id, int tareaAsociada, String nombre) {
 		super();
 		this.id = id;
+		this.tareaAsociada = new Tarea();
 		this.tareaAsociada.setId(tareaAsociada);
 		this.nombre = nombre;
 	}
@@ -29,6 +30,7 @@ public class AreaFuncional {
 	}
 
 	public void setTareaAsociada(int tareaAsociada) {
+		this.tareaAsociada = new Tarea();
 		this.tareaAsociada.setId(tareaAsociada);
 	}
 

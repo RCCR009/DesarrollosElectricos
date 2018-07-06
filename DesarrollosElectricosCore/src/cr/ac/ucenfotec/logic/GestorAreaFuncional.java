@@ -8,8 +8,8 @@ public class GestorAreaFuncional{
 	
 	MongoDbTransaction transaction;
 	
-	GestorAreaFuncional(){
-		transaction = new MongoDbTransaction();
+	public GestorAreaFuncional(){
+		this.transaction = new MongoDbTransaction();
 	}
 	
 	public void create(Object obj) {

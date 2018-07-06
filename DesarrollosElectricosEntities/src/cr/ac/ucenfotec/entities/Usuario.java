@@ -14,6 +14,7 @@ public class Usuario {
 	public Usuario(String id, int areaAsociada, String clave, String nombre, String apellido) {
 		super();
 		this.id = id;
+		this.areaAsociada = new AreaFuncional();
 		this.areaAsociada.setId(areaAsociada);
 		this.clave = clave;
 		this.nombre = nombre;
@@ -33,6 +34,7 @@ public class Usuario {
 	}
 
 	public void setAreaAsociada(int areaAsociada) {
+		this.areaAsociada = new AreaFuncional();
 		this.areaAsociada.setId(areaAsociada);
 	}
 

@@ -8,8 +8,8 @@ public class GestorTramite {
 	
 	MongoDbTransaction transaction;
 	
-	GestorTramite(){
-		transaction = new MongoDbTransaction();
+	public GestorTramite(){
+		this.transaction = new MongoDbTransaction();
 	}
 	
 	public void create(Object obj) {

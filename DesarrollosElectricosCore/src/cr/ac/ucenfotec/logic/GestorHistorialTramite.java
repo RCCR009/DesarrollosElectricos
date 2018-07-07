@@ -15,7 +15,7 @@ public class GestorHistorialTramite {
 	
 	public void create(Object obj) {
 		try {
-			transaction.InsertDocuement(obj, "HistorialTramites");	
+			transaction.InsertDocuement(obj, "historialtramites");	
 		}catch(Exception e) {
 			throw e;
 		}
@@ -23,7 +23,7 @@ public class GestorHistorialTramite {
 	
 	public ArrayList<Object> retriveAll(Object obj) {
 		try {
-			return transaction.GetData(obj, "HistorialTramites");		 
+			return transaction.GetData(obj, "historialtramites");		 
 		}catch(Exception e) {
 			throw e;
 		}
@@ -31,7 +31,7 @@ public class GestorHistorialTramite {
 	
 	public Object retrive(Object obj) {
 		try {
-			return transaction.RetriveDocument(obj, "HistorialTramites");
+			return transaction.RetriveDocument(obj, "historialtramites");
 		}catch(Exception e) {
 			throw e;
 		}
@@ -43,7 +43,7 @@ public class GestorHistorialTramite {
 			HistorialTramite ht = (HistorialTramite)obj;
 			historialTramite.setTipoTramite(ht.getTipoTramite());
 			
-			transaction.UpdateDocument(obj, "HistorialTramites", "id",historialTramite);
+			transaction.UpdateDocument(obj, "historialtramites", "id",historialTramite);
 		}catch(Exception e) {
 			throw e;
 		}
@@ -52,7 +52,7 @@ public class GestorHistorialTramite {
 	
 	public void delete(Object obj) {
 		try {
-			transaction.DeleteDocument(obj, "HistorialTramites");
+			transaction.DeleteDocument(obj, "historialtramites");
 		}catch(Exception e) {
 			throw e;
 		}

@@ -1,20 +1,21 @@
 package cr.ac.ucenfotec.logic;
 
 import java.util.ArrayList;
-import DataAccess.MongoDbTransaction;
-import cr.ac.ucenfotec.entities.Tramite;
 
-public class GestorTramite {
+import DataAccess.MongoDbTransaction;
+import cr.ac.ucenfotec.entities.TareasCompletadas;
+
+public class GestorTareasCompletadas {
 	
 	MongoDbTransaction transaction;
 	
-	public GestorTramite(){
+	public GestorTareasCompletadas() {
 		this.transaction = new MongoDbTransaction();
 	}
 	
 	public void create(Object obj) {
 		try {
-			transaction.InsertDocuement(obj, "tramites");	
+			transaction.InsertDocuement(obj, "tareascompletadas");	
 		}catch(Exception e) {
 			throw e;
 		}
@@ -22,7 +23,7 @@ public class GestorTramite {
 	
 	public ArrayList<Object> retriveAll(Object obj) {
 		try {
-			return transaction.GetData(obj, "tramites");		 
+			return transaction.GetData(obj, "tareascompletadas");		 
 		}catch(Exception e) {
 			throw e;
 		}
@@ -30,7 +31,7 @@ public class GestorTramite {
 	
 	public Object retrive(Object obj) {
 		try {
-			return transaction.RetriveDocument(obj, "tramites");
+			return transaction.RetriveDocument(obj, "tareascompletadas");
 		}catch(Exception e) {
 			throw e;
 		}
@@ -38,11 +39,11 @@ public class GestorTramite {
 	
 	public void update(Object obj) {
 		try {
-			Tramite tramite = new Tramite();
-			Tramite t = (Tramite)obj;
-			tramite.setId(t.getId());
+			TareasCompletadas tareaCompletada = new TareasCompletadas();
+			TareasCompletadas tc = (TareasCompletadas)obj;
+			tareaCompletada.setId(tc.getId());
 			
-			transaction.UpdateDocument(obj, "tramites", "id",tramite);
+			transaction.UpdateDocument(obj, "tareascompletadas", "id",tareaCompletada);
 		}catch(Exception e) {
 			throw e;
 		}
@@ -51,7 +52,7 @@ public class GestorTramite {
 	
 	public void delete(Object obj) {
 		try {
-			transaction.DeleteDocument(obj, "tramites");
+			transaction.DeleteDocument(obj, "tareascompletadas");
 		}catch(Exception e) {
 			throw e;
 		}

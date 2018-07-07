@@ -2,19 +2,19 @@ package cr.ac.ucenfotec.logic;
 
 import java.util.ArrayList;
 import DataAccess.MongoDbTransaction;
-import cr.ac.ucenfotec.entities.Tramite;
+import cr.ac.ucenfotec.entities.AreaFuncional;
 
-public class GestorTramite {
+public class GestorAreaFuncional{
 	
 	MongoDbTransaction transaction;
 	
-	public GestorTramite(){
+	public GestorAreaFuncional(){
 		this.transaction = new MongoDbTransaction();
 	}
 	
 	public void create(Object obj) {
 		try {
-			transaction.InsertDocuement(obj, "tramites");	
+			transaction.InsertDocuement(obj, "areasfuncionales");	
 		}catch(Exception e) {
 			throw e;
 		}
@@ -22,7 +22,7 @@ public class GestorTramite {
 	
 	public ArrayList<Object> retriveAll(Object obj) {
 		try {
-			return transaction.GetData(obj, "tramites");		 
+			return transaction.GetData(obj, "areasfuncionales");		 
 		}catch(Exception e) {
 			throw e;
 		}
@@ -30,7 +30,7 @@ public class GestorTramite {
 	
 	public Object retrive(Object obj) {
 		try {
-			return transaction.RetriveDocument(obj, "tramites");
+			return transaction.RetriveDocument(obj, "areasfuncionales");
 		}catch(Exception e) {
 			throw e;
 		}
@@ -38,20 +38,19 @@ public class GestorTramite {
 	
 	public void update(Object obj) {
 		try {
-			Tramite tramite = new Tramite();
-			Tramite t = (Tramite)obj;
-			tramite.setId(t.getId());
+			AreaFuncional areaFuncional = new AreaFuncional();
+			AreaFuncional af = (AreaFuncional)obj;
+			areaFuncional.setId(af.getId()); 
 			
-			transaction.UpdateDocument(obj, "tramites", "id",tramite);
+			transaction.UpdateDocument(obj, "areasfuncionales","id",areaFuncional);
 		}catch(Exception e) {
 			throw e;
-		}
-		
+		}	
 	}
 	
 	public void delete(Object obj) {
 		try {
-			transaction.DeleteDocument(obj, "tramites");
+			transaction.DeleteDocument(obj, "areasfuncionales");
 		}catch(Exception e) {
 			throw e;
 		}

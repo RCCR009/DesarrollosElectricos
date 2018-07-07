@@ -1,28 +1,38 @@
 package cr.ac.ucenfotec.entities;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class HistorialTramite {
+	private int id;
 	private Tramite tramite;
 	private Usuario usuarioInicio;
 	private Estado estado;
-	private int tareaCompletadas;
-	private Date fechaInicio;
-	private Date fechaFin;
+	private TareasCompletadas tareaCompletadas;
+	private LocalDate fechaInicio;
+	private LocalDate fechaFin;
 	
 	public HistorialTramite() {
 		
 	}
 	
-	public HistorialTramite(Tramite tramite, Usuario usuarioInicio, Estado estado,
-			int tareaCompletadas, Date fechaInicio, Date fechaFin) {
+	public HistorialTramite(int id, Tramite tramite, Usuario usuarioInicio, Estado estado,
+			TareasCompletadas tareaCompletadas, LocalDate fechaInicio, LocalDate fechaFin) {
 		super();
+		this.id = id;
 		this.tramite = tramite;
 		this.usuarioInicio = usuarioInicio;
 		this.estado = estado;
 		this.tareaCompletadas = tareaCompletadas;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Tramite getTipoTramite() {
@@ -49,35 +59,35 @@ public class HistorialTramite {
 		this.estado = estado;
 	}
 
-	public int getTareaCompletadas() {
+	public TareasCompletadas getTareaCompletadas() {
 		return tareaCompletadas;
 	}
 
-	public void setTareaCompletadas(int tareaCompletadas) {
+	public void setTareaCompletadas(TareasCompletadas tareaCompletadas) {
 		this.tareaCompletadas = tareaCompletadas;
 	}
 
-	public Date getFechaInicio() {
+	public LocalDate getFechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public Date getFechaFin() {
+	public LocalDate getFechaFin() {
 		return fechaFin;
 	}
 
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 
 	@Override
 	public String toString() {
-		return "historialTramite [tramite=" + tramite + ", usuarioInicio=" + usuarioInicio + ", estado=" + estado
-				+ ", tareaCompletadas=" + tareaCompletadas + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin
-				+ "]";
+		return "HistorialTramite [id=" + id + ", tramite=" + tramite + ", usuarioInicio=" + usuarioInicio + ", estado="
+				+ estado + ", tareaCompletadas=" + tareaCompletadas + ", fechaInicio=" + fechaInicio + ", fechaFin="
+				+ fechaFin + "]";
 	}
 
 }

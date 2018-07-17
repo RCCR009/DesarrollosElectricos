@@ -14,8 +14,6 @@ public class GestorFactory {
 			return Optional.of(new GestorHistorialTramite());
 		case TAREA:
 			return Optional.of(new GestorTarea());
-		case TAREASCOMPLETADAS:
-			return Optional.of(new GestorTareasCompletadas());
 		case TRAMITE:
 			return Optional.of(new GestorTramite());
 		case USUARIO:

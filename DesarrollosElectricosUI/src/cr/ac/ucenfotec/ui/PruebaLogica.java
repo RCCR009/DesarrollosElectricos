@@ -60,7 +60,7 @@ public class PruebaLogica {
 	}
 	
 	public static void loginAdmin() throws java.io.IOException {
-		GestorUsuario gestorU = new GestorUsuario();
+		Optional<GestorMaster> gestorU = GestorFactory.createGestor(GestorType.USUARIO);
 		Usuario u = new Usuario();
 		String id,clave;
 		
@@ -73,7 +73,7 @@ public class PruebaLogica {
 
             u.setId(id);
             u.setClave(clave);
-            u = (Usuario) gestorU.retrive(u);
+            u = (Usuario) gestorU.get().retrive(u);
 
             if (u != null) {
                 out.println("\nBienvenido al sistema\n");

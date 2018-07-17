@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class PruebaLogica {
 	
@@ -132,10 +134,10 @@ public class PruebaLogica {
 		int numero;
 		Tramite tramite = new Tramite();
 		
-		GestorTramite GTR = new GestorTramite();	
-		GestorTarea GTA = new GestorTarea();
-		GestorActividad GA = new GestorActividad();
-		GestorAreaFuncional GAF = new GestorAreaFuncional();
+		Optional<GestorMaster> GTR = GestorFactory.createGestor(GestorType.TRAMITE);
+		Optional<GestorMaster> GTA = GestorFactory.createGestor(GestorType.TAREA);
+		Optional<GestorMaster> GA = GestorFactory.createGestor(GestorType.ACTIVIDAD);
+		Optional<GestorMaster> GAF = GestorFactory.createGestor(GestorType.AREAFUNCIONAL);
 		ArrayList<Tramite> listTramite = new ArrayList<>(); 
 		ArrayList<Tarea> listTarea = new ArrayList<>();
 		ArrayList<Actividad> listActividad = new ArrayList<>();
@@ -182,7 +184,7 @@ public class PruebaLogica {
 				area.setId(idArea);
 				area.setNombre(nombreArea);
 				area.setTareaAsociada(idTarea);
-				GAF.create(area);
+				GAF.get().create(area);
 			
 				int terminarActividad;
 				do {
@@ -215,7 +217,7 @@ public class PruebaLogica {
 			}while(terminarTarea == 0);
 			
 			tramite.setTareas(listTarea);
-			GTR.create(tramite);
+			GTR.get().create(tramite);
 			
         } catch (Exception e) {
             out.println(e.getMessage());

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import DataAccess.MongoDbTransaction;
 import cr.ac.ucenfotec.entities.AreaFuncional;
 
-public class GestorAreaFuncional{
+public class GestorAreaFuncional implements GestorMaster{
 	
 	MongoDbTransaction transaction;
 	
@@ -12,6 +12,7 @@ public class GestorAreaFuncional{
 		this.transaction = new MongoDbTransaction();
 	}
 	
+	@Override
 	public void create(Object obj) {
 		try {
 			transaction.InsertDocuement(obj, "areasfuncionales");	
@@ -20,6 +21,7 @@ public class GestorAreaFuncional{
 		}
 	}
 	
+	@Override
 	public ArrayList<Object> retriveAll(Object obj) {
 		try {
 			return transaction.GetData(obj, "areasfuncionales");		 
@@ -28,6 +30,7 @@ public class GestorAreaFuncional{
 		}
 	}
 	
+	@Override
 	public Object retrive(Object obj) {
 		try {
 			return transaction.RetriveDocument(obj, "areasfuncionales");
@@ -36,6 +39,7 @@ public class GestorAreaFuncional{
 		}
 	}
 	
+	@Override
 	public void update(Object obj) {
 		try {
 			AreaFuncional areaFuncional = new AreaFuncional();
@@ -48,6 +52,7 @@ public class GestorAreaFuncional{
 		}	
 	}
 	
+	@Override
 	public void delete(Object obj) {
 		try {
 			transaction.DeleteDocument(obj, "areasfuncionales");

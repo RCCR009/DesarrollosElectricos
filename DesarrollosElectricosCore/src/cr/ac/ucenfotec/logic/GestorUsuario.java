@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import DataAccess.MongoDbTransaction;
 import cr.ac.ucenfotec.entities.Usuario;
 
-public class GestorUsuario {
+public class GestorUsuario implements GestorMaster {
 	
 	MongoDbTransaction transaction;
 	
@@ -13,6 +13,7 @@ public class GestorUsuario {
 		this.transaction = new MongoDbTransaction();
 	}
 	
+	@Override
 	public void create(Object obj) {
 		try {
 			transaction.InsertDocuement(obj, "usuarios");	
@@ -21,6 +22,7 @@ public class GestorUsuario {
 		}
 	}
 	
+	@Override
 	public ArrayList<Object> retriveAll(Object obj) {
 		try {
 			return transaction.GetData(obj, "Usuarios");		 
@@ -29,6 +31,7 @@ public class GestorUsuario {
 		}
 	}
 	
+	@Override
 	public Object retrive(Object obj) {
 		try {
 			return transaction.RetriveDocument(obj, "usuarios");
@@ -37,6 +40,7 @@ public class GestorUsuario {
 		}
 	}
 	
+	@Override
 	public void update(Object obj) {
 		try {
 			Usuario usuario = new Usuario();
@@ -50,6 +54,7 @@ public class GestorUsuario {
 		
 	}
 	
+	@Override
 	public void delete(Object obj) {
 		try {
 			transaction.DeleteDocument(obj, "usuarios");

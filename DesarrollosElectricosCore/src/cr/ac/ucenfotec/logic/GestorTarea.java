@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import DataAccess.MongoDbTransaction;
 import cr.ac.ucenfotec.entities.Tarea;
 
-public class GestorTarea {
+public class GestorTarea implements GestorMaster {
 	
 	MongoDbTransaction transaction;
 	
@@ -13,6 +13,7 @@ public class GestorTarea {
 		this.transaction = new MongoDbTransaction();
 	}
 	
+	@Override
 	public void create(Object obj) {
 		try {
 			transaction.InsertDocuement(obj, "tareas");	
@@ -21,6 +22,7 @@ public class GestorTarea {
 		}
 	}
 	
+	@Override
 	public ArrayList<Object> retriveAll(Object obj) {
 		try {
 			return transaction.GetData(obj, "tareas");		 
@@ -29,6 +31,7 @@ public class GestorTarea {
 		}
 	}
 	
+	@Override
 	public Object retrive(Object obj) {
 		try {
 			return transaction.RetriveDocument(obj, "tareas");
@@ -37,6 +40,7 @@ public class GestorTarea {
 		}
 	}
 	
+	@Override
 	public void update(Object obj) {
 		try {
 			Tarea tarea = new Tarea();
@@ -50,6 +54,7 @@ public class GestorTarea {
 		
 	}
 	
+	@Override
 	public void delete(Object obj) {
 		try {
 			transaction.DeleteDocument(obj, "tareas");

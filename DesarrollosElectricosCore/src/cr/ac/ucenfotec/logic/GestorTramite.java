@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import DataAccess.MongoDbTransaction;
 import cr.ac.ucenfotec.entities.Tramite;
 
-public class GestorTramite {
+public class GestorTramite implements GestorMaster {
 	
 	MongoDbTransaction transaction;
 	
@@ -12,6 +12,7 @@ public class GestorTramite {
 		this.transaction = new MongoDbTransaction();
 	}
 	
+	@Override
 	public void create(Object obj) {
 		try {
 			transaction.InsertDocuement(obj, "tramites");	
@@ -20,6 +21,7 @@ public class GestorTramite {
 		}
 	}
 	
+	@Override
 	public ArrayList<Object> retriveAll(Object obj) {
 		try {
 			return transaction.GetData(obj, "tramites");		 
@@ -28,6 +30,7 @@ public class GestorTramite {
 		}
 	}
 	
+	@Override
 	public Object retrive(Object obj) {
 		try {
 			return transaction.RetriveDocument(obj, "tramites");
@@ -36,6 +39,7 @@ public class GestorTramite {
 		}
 	}
 	
+	@Override
 	public void update(Object obj) {
 		try {
 			Tramite tramite = new Tramite();
@@ -49,6 +53,7 @@ public class GestorTramite {
 		
 	}
 	
+	@Override
 	public void delete(Object obj) {
 		try {
 			transaction.DeleteDocument(obj, "tramites");

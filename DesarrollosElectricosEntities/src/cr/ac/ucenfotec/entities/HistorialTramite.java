@@ -1,13 +1,16 @@
 package cr.ac.ucenfotec.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class HistorialTramite {
 	private int id;
 	private Tramite tramite;
 	private Usuario usuarioInicio;
 	private Estado estado;
-	private TareasCompletadas tareaCompletadas;
+	private List<Tarea> tareaCompletadas;
 	private LocalDate fechaInicio;
 	private LocalDate fechaFin;
 	
@@ -16,7 +19,7 @@ public class HistorialTramite {
 	}
 	
 	public HistorialTramite(int id, Tramite tramite, Usuario usuarioInicio, Estado estado,
-			TareasCompletadas tareaCompletadas, LocalDate fechaInicio, LocalDate fechaFin) {
+			ArrayList<Tarea> tareaCompletadas, LocalDate fechaInicio, LocalDate fechaFin) {
 		super();
 		this.id = id;
 		this.tramite = tramite;
@@ -59,11 +62,11 @@ public class HistorialTramite {
 		this.estado = estado;
 	}
 
-	public TareasCompletadas getTareaCompletadas() {
-		return tareaCompletadas;
+	public List<Tarea> getTareaCompletadas() {
+		return Collections.unmodifiableList(tareaCompletadas);
 	}
 
-	public void setTareaCompletadas(TareasCompletadas tareaCompletadas) {
+	public void setTareaCompletadas(List<Tarea> tareaCompletadas) {
 		this.tareaCompletadas = tareaCompletadas;
 	}
 

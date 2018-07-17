@@ -1,15 +1,17 @@
 package cr.ac.ucenfotec.entities;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Tramite {
 	private int id;
 	private int numero;
 	private String detalle;
-	private ArrayList<Tarea> tareas;
+	private List<Tarea> tareas;
 	
 	public Tramite() {
-		super();
+		tareas = new ArrayList<>();
 	}
 
 	public Tramite(int id, String detalle, ArrayList<Tarea> tareas, int numero) {
@@ -36,8 +38,8 @@ public class Tramite {
 		this.detalle = detalle;
 	}
 
-	public ArrayList<Tarea> getTareas() {
-		return tareas;
+	public List<Tarea> getTareas() {
+		return Collections.unmodifiableList(tareas);
 	}
 
 	public void setTareas(ArrayList<Tarea> tareas) {

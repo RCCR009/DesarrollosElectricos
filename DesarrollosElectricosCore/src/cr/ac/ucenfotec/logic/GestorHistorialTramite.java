@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import DataAccess.MongoDbTransaction;
 import cr.ac.ucenfotec.entities.HistorialTramite;
 
-public class GestorHistorialTramite {
+public class GestorHistorialTramite implements GestorMaster {
 	
 	MongoDbTransaction transaction;
 	
@@ -13,6 +13,7 @@ public class GestorHistorialTramite {
 		this.transaction = new MongoDbTransaction();
 	}
 	
+	@Override
 	public void create(Object obj) {
 		try {
 			transaction.InsertDocuement(obj, "historialtramites");	
@@ -21,6 +22,7 @@ public class GestorHistorialTramite {
 		}
 	}
 	
+	@Override
 	public ArrayList<Object> retriveAll(Object obj) {
 		try {
 			return transaction.GetData(obj, "historialtramites");		 
@@ -29,6 +31,7 @@ public class GestorHistorialTramite {
 		}
 	}
 	
+	@Override
 	public Object retrive(Object obj) {
 		try {
 			return transaction.RetriveDocument(obj, "historialtramites");
@@ -37,6 +40,7 @@ public class GestorHistorialTramite {
 		}
 	}
 	
+	@Override
 	public void update(Object obj) {
 		try {
 			HistorialTramite historialTramite = new HistorialTramite();
@@ -50,6 +54,7 @@ public class GestorHistorialTramite {
 		
 	}
 	
+	@Override
 	public void delete(Object obj) {
 		try {
 			transaction.DeleteDocument(obj, "historialtramites");

@@ -9,5 +9,12 @@
 	<classpathentry kind="lib" path="C:/dev/java/cenfotec/jar/mongo-java-driver-3.7.1.jar"/>
 	<classpathentry kind="lib" path="C:/dev/java/cenfotec/jar/objects.jar"/>
 	<classpathentry kind="lib" path="C:/dev/java/cenfotec/jar/access.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/DesarrollosElectricosDataAccess"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/DesarrollosElectricosEntities"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/DesarrollosElectricosUI"/>
+	<classpathentry kind="lib" path="/Users/mariajose/Desktop/Mari/Proyecto/mongo-java-driver-3.7.1.jar"/>
+	<classpathentry kind="lib" path="/Users/mariajose/Desktop/Mari/Proyecto/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="/Users/mariajose/Desktop/Mari/Proyecto/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="/Users/mariajose/Desktop/Mari/Proyecto/gson-2.2.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

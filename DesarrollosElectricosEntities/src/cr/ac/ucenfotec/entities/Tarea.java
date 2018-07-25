@@ -8,7 +8,7 @@ import java.util.List;
 public class Tarea {
 	private int id;
 	private String detalle;
-	private List<Actividad> actividades;
+	private ArrayList<Actividad> actividades;
 	private int numero;
 	private Usuario usuario;
 	private LocalDate fechaFin;
@@ -43,8 +43,8 @@ public class Tarea {
 		this.detalle = detalle;
 	}
 
-	public List<Actividad> getActividades() {
-		return Collections.unmodifiableList(actividades);
+	public ArrayList<Actividad> getActividades() {
+		return (ArrayList<Actividad>) Collections.unmodifiableList(actividades);
 	}
 
 	public void setActividades(ArrayList<Actividad> actividades) {

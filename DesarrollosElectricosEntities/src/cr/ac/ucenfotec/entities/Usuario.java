@@ -29,8 +29,8 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public AreaFuncional getAreaAsociada() {
-		return areaAsociada;
+	public int getAreaAsociada() {
+		return areaAsociada.getId();
 	}
 
 	public void setAreaAsociada(int areaAsociada) {

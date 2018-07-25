@@ -121,7 +121,7 @@ public void test5() {
 	
 	Tarea tarea1 = new Tarea(1,"esto es una prueba",actividades,1,usuario1,today);
 	
-	//void assertArrayEquals(actividades,tarea1.getActividades());
+	 //Assert.assertArrayEquals(actividades,tarea1.getActividades());
 	
 }
 

@@ -10,7 +10,7 @@ public class MongoDbConnection {
 	public MongoDbConnection(String host, int port) {
 		
 		Mongo = new MongoClient(host, port);
-		MongoDataBase = Mongo.getDatabase("desarrolloselectricos");
+		MongoDataBase = Mongo.getDatabase("");
 		java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(Level.SEVERE);
 	}
 	

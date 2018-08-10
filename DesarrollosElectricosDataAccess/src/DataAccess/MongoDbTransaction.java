@@ -12,12 +12,21 @@ import com.mongodb.client.model.Filters;
 
 
 public class MongoDbTransaction {
-
 	private MongoDbConnection MongoConnection;
+	private static MongoDbTransaction instance;
 	
-	public MongoDbTransaction() {
+	
+	private MongoDbTransaction() {
 		MongoConnection = new MongoDbConnection("localhost" , 27017);
 	}
+	
+	public static MongoDbTransaction GetInstance() {
+		if(instance == null) {
+			instance = new MongoDbTransaction();
+		}
+		return instance;
+	}
+	
 	
 	public void InsertDocuement(Object obj, String collectionName)
 	{	

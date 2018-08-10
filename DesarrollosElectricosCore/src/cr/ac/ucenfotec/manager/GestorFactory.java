@@ -1,8 +1,9 @@
-package cr.ac.ucenfotec.logic;
+package cr.ac.ucenfotec.manager;
 
 import java.util.Optional;
+import DataAccess.MongoDbTransaction;
 
-public class GestorFactory {
+public class GestorFactory {	
 	
 	public static Optional<GestorMaster> createGestor(GestorType ptype) {
 		switch(ptype) {

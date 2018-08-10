@@ -5,7 +5,9 @@ import java.util.logging.Level;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 
-public class MongoDbConnection {
+public class MongoDbConnection {	
+	private MongoClient Mongo;
+	private MongoDatabase MongoDataBase;
 
 	public MongoDbConnection(String host, int port) {
 		
@@ -13,10 +15,6 @@ public class MongoDbConnection {
 		MongoDataBase = Mongo.getDatabase("desarrolloselectricos");
 		java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(Level.SEVERE);
 	}
-	
-	private MongoClient Mongo;
-	
-	private MongoDatabase MongoDataBase;
 
 	public MongoClient getMongo() {
 		return Mongo;

@@ -1,15 +1,15 @@
-package cr.ac.ucenfotec.logic;
+package cr.ac.ucenfotec.manager;
 
 import java.util.ArrayList;
 import DataAccess.MongoDbTransaction;
 import cr.ac.ucenfotec.entities.Tramite;
 
-public class GestorTramite implements GestorMaster {
+public class GestorTramite extends GestorMaster {
 	
 	MongoDbTransaction transaction;
 	
 	public GestorTramite(){
-		this.transaction = new MongoDbTransaction();
+		transaction = MongoDbTransaction.GetInstance();
 	}
 	
 	@Override

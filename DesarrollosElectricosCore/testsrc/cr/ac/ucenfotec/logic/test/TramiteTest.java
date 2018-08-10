@@ -13,7 +13,7 @@ import cr.ac.ucenfotec.entities.AreaFuncional;
 import cr.ac.ucenfotec.entities.Tarea;
 import cr.ac.ucenfotec.entities.Tramite;
 import cr.ac.ucenfotec.entities.Usuario;
-import cr.ac.ucenfotec.logic.GestorTramite;
+import cr.ac.ucenfotec.manager.GestorTramite;
 
 public class TramiteTest {
 

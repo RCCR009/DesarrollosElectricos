@@ -1,16 +1,16 @@
-package cr.ac.ucenfotec.logic;
+package cr.ac.ucenfotec.manager;
 
 import java.util.ArrayList;
 
 import DataAccess.MongoDbTransaction;
 import cr.ac.ucenfotec.entities.Usuario;
 
-public class GestorUsuario implements GestorMaster {
+public class GestorUsuario extends GestorMaster {
 	
 	MongoDbTransaction transaction;
 	
 	public GestorUsuario() {
-		this.transaction = new MongoDbTransaction();
+		transaction = MongoDbTransaction.GetInstance();
 	}
 	
 	@Override

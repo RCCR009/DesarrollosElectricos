@@ -1,15 +1,14 @@
-package cr.ac.ucenfotec.logic;
+package cr.ac.ucenfotec.manager;
 
 import java.util.ArrayList;
 import DataAccess.MongoDbTransaction;
 import cr.ac.ucenfotec.entities.AreaFuncional;
 
-public class GestorAreaFuncional implements GestorMaster{
-	
-	MongoDbTransaction transaction;
+public class GestorAreaFuncional extends GestorMaster{
+
 	
 	public GestorAreaFuncional(){
-		this.transaction = new MongoDbTransaction();
+		transaction = MongoDbTransaction.GetInstance();
 	}
 	
 	@Override

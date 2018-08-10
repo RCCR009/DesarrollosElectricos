@@ -1,4 +1,4 @@
-package cr.ac.ucenfotec.logic;
+package cr.ac.ucenfotec.manager;
 
 public enum GestorType {
 	ACTIVIDAD,

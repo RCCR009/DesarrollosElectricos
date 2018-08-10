@@ -8,15 +8,25 @@ import org.bson.Document;
 import com.google.gson.Gson;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
 
 
 public class MongoDbTransaction {
-
 	private MongoDbConnection MongoConnection;
+	private static MongoDbTransaction instance;
 	
-	public MongoDbTransaction() {
+	
+	private MongoDbTransaction() {
 		MongoConnection = new MongoDbConnection("localhost" , 27017);
 	}
+	
+	public static MongoDbTransaction GetInstance() {
+		if(instance == null) {
+			instance = new MongoDbTransaction();
+		}
+		return instance;
+	}
+	
 	
 	public void InsertDocuement(Object obj, String collectionName)
 	{	
@@ -39,7 +49,7 @@ public class MongoDbTransaction {
 		
 		Gson gson = new Gson();
 		
-		for(Document document : documents){// pasa documento de gson a objec, que se utiliza para retornar
+		for(Document document : documents){
 			
 			String result = gson.toJson(document);			
 			
@@ -64,20 +74,16 @@ public class MongoDbTransaction {
 		
 	}
 	
-	public Object RetriveDocument(Object obj, String collectionName) {
+	public Object RetriveDocument(String nameValue,Object obj, String collectionName) {
 		Object myObj = new Object();
+		Gson gson = new Gson();
 		MongoCollection<Document> collection = MongoConnection.getMongoDataBase().getCollection(collectionName);
-		Gson gson = new Gson(); 
-		String jsonObject = gson.toJson(obj);	      
-	    Document dbObject = gson.fromJson(jsonObject, Document.class);
-
-	    Document myDoc = collection.find(dbObject).first();
-	    
-	    String result = gson.toJson(myDoc);			
 		
-		myObj = ((Object)gson.fromJson(result, obj.getClass()));
-	    
-	    return myObj;
+		Document myDoc = collection.find(Filters.eq(nameValue,obj)).first();		
+		String result = gson.toJson(myDoc);			
+		myObj = (gson.fromJson(result, obj.getClass()));
+
+		return myObj;	
 	}
 	
 	public void DeleteDocument(Object obj, String collectionName) {

@@ -10,15 +10,22 @@ public class Usuario {
 	public Usuario() {
 		
 	}
-	
-	public Usuario(String id, int areaAsociada, String clave, String nombre, String apellido) {
+
+	public Usuario(String id, AreaFuncional areaAsociada, String clave, String nombre, String apellido) {
 		super();
 		this.id = id;
-		this.areaAsociada = new AreaFuncional();
-		this.areaAsociada.setId(areaAsociada);
+		this.areaAsociada = areaAsociada;
 		this.clave = clave;
 		this.nombre = nombre;
 		this.apellido = apellido;
+	}
+	
+	public AreaFuncional getAreaAsociada() {
+		return areaAsociada;
+	}
+
+	public void setAreaAsociada(AreaFuncional areaAsociada) {
+		this.areaAsociada = areaAsociada;
 	}
 
 	public String getId() {
@@ -27,15 +34,6 @@ public class Usuario {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public int getAreaAsociada() {
-		return areaAsociada.getId();
-	}
-
-	public void setAreaAsociada(int areaAsociada) {
-		this.areaAsociada = new AreaFuncional();
-		this.areaAsociada.setId(areaAsociada);
 	}
 
 	public String getClave() {
@@ -62,10 +60,6 @@ public class Usuario {
 		this.apellido = apellido;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", areaAsociada=" + areaAsociada + ", clave=" + clave + ", nombre=" + nombre
-				+ ", apellido=" + apellido + "]";
-	}
+
 	
 }

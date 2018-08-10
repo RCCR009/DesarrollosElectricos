@@ -1,22 +1,22 @@
-package cr.ac.ucenfotec.logic;
+package cr.ac.ucenfotec.manager;
 
 import java.util.ArrayList;
 
 import DataAccess.MongoDbTransaction;
-import cr.ac.ucenfotec.entities.Tarea;
+import cr.ac.ucenfotec.entities.Usuario;
 
-public class GestorTarea implements GestorMaster {
+public class GestorUsuario extends GestorMaster {
 	
 	MongoDbTransaction transaction;
 	
-	public GestorTarea() {
-		this.transaction = new MongoDbTransaction();
+	public GestorUsuario() {
+		transaction = MongoDbTransaction.GetInstance();
 	}
 	
 	@Override
 	public void create(Object obj) {
 		try {
-			transaction.InsertDocuement(obj, "tareas");	
+			transaction.InsertDocuement(obj, "usuarios");	
 		}catch(Exception e) {
 			throw e;
 		}
@@ -25,7 +25,7 @@ public class GestorTarea implements GestorMaster {
 	@Override
 	public ArrayList<Object> retriveAll(Object obj) {
 		try {
-			return transaction.GetData(obj, "tareas");		 
+			return transaction.GetData(obj, "Usuarios");		 
 		}catch(Exception e) {
 			throw e;
 		}
@@ -33,8 +33,10 @@ public class GestorTarea implements GestorMaster {
 	
 	@Override
 	public Object retrive(Object obj) {
+		String nameValue;
 		try {
-			return transaction.RetriveDocument(obj, "tareas");
+			nameValue = "id";
+			return transaction.RetriveDocument(nameValue,obj,"usuarios");
 		}catch(Exception e) {
 			throw e;
 		}
@@ -43,11 +45,11 @@ public class GestorTarea implements GestorMaster {
 	@Override
 	public void update(Object obj) {
 		try {
-			Tarea tarea = new Tarea();
-			Tarea t = (Tarea)obj;
-			tarea.setId(t.getId());
+			Usuario usuario = new Usuario();
+			Usuario u = (Usuario)obj;
+			usuario.setId(u.getId());
 			
-			transaction.UpdateDocument(obj, "tareas", "id",tarea);
+			transaction.UpdateDocument(obj, "usuarios", "id",usuario);
 		}catch(Exception e) {
 			throw e;
 		}
@@ -57,7 +59,7 @@ public class GestorTarea implements GestorMaster {
 	@Override
 	public void delete(Object obj) {
 		try {
-			transaction.DeleteDocument(obj, "tareas");
+			transaction.DeleteDocument(obj, "usuarios");
 		}catch(Exception e) {
 			throw e;
 		}

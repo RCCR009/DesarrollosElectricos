@@ -1,7 +1,6 @@
 package cr.ac.ucenfotec.entities;
 
 public class Actividad {
-	private int id;
 	private String detalle;
 	private String respuesta;
 	
@@ -9,19 +8,10 @@ public class Actividad {
 		
 	}
 	
-	public Actividad(int id, String detalle, String respuesta) {
+	public Actividad(String detalle, String respuesta) {
 		super();
-		this.id = id;
 		this.detalle = detalle;
 		this.respuesta = respuesta;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getDetalle() {
@@ -42,7 +32,7 @@ public class Actividad {
 
 	@Override
 	public String toString() {
-		return "Actividad [id=" + id + ", detalle=" + detalle + ", respuesta=" + respuesta + "]";
+		return "Actividad [detalle=" + detalle + ", respuesta=" + respuesta + "]";
 	}
 
 }

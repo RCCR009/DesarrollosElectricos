@@ -1,16 +1,14 @@
-package cr.ac.ucenfotec.logic;
+package cr.ac.ucenfotec.manager;
 
 import java.util.ArrayList;
 
 import DataAccess.MongoDbTransaction;
 import cr.ac.ucenfotec.entities.HistorialTramite;
 
-public class GestorHistorialTramite implements GestorMaster {
-	
-	MongoDbTransaction transaction;
+public class GestorHistorialTramite extends GestorMaster {
 	
 	public GestorHistorialTramite() {
-		this.transaction = new MongoDbTransaction();
+		transaction = MongoDbTransaction.GetInstance();
 	}
 	
 	@Override
@@ -33,8 +31,10 @@ public class GestorHistorialTramite implements GestorMaster {
 	
 	@Override
 	public Object retrive(Object obj) {
+		String nameValue;
 		try {
-			return transaction.RetriveDocument(obj, "historialtramites");
+			nameValue = "id";
+			return transaction.RetriveDocument(nameValue, obj, "historialtramites");
 		}catch(Exception e) {
 			throw e;
 		}
@@ -45,7 +45,7 @@ public class GestorHistorialTramite implements GestorMaster {
 		try {
 			HistorialTramite historialTramite = new HistorialTramite();
 			HistorialTramite ht = (HistorialTramite)obj;
-			historialTramite.setTipoTramite(ht.getTipoTramite());
+			historialTramite.setId(ht.getId());
 			
 			transaction.UpdateDocument(obj, "historialtramites", "id",historialTramite);
 		}catch(Exception e) {

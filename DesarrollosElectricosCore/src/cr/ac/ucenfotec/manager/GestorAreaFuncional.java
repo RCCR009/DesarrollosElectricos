@@ -1,15 +1,14 @@
-package cr.ac.ucenfotec.logic;
+package cr.ac.ucenfotec.manager;
 
 import java.util.ArrayList;
 import DataAccess.MongoDbTransaction;
 import cr.ac.ucenfotec.entities.AreaFuncional;
 
-public class GestorAreaFuncional implements GestorMaster{
-	
-	MongoDbTransaction transaction;
+public class GestorAreaFuncional extends GestorMaster{
+
 	
 	public GestorAreaFuncional(){
-		this.transaction = new MongoDbTransaction();
+		transaction = MongoDbTransaction.GetInstance();
 	}
 	
 	@Override
@@ -32,13 +31,15 @@ public class GestorAreaFuncional implements GestorMaster{
 	
 	@Override
 	public Object retrive(Object obj) {
+		String nameValue;
 		try {
-			return transaction.RetriveDocument(obj, "areasfuncionales");
+			nameValue = "id";		
+			return transaction.RetriveDocument(nameValue, obj, "areasfuncionales");
 		}catch(Exception e) {
 			throw e;
 		}
 	}
-	
+
 	@Override
 	public void update(Object obj) {
 		try {

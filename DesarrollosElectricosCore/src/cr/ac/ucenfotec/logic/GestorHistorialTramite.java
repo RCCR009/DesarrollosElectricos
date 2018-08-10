@@ -33,8 +33,10 @@ public class GestorHistorialTramite implements GestorMaster {
 	
 	@Override
 	public Object retrive(Object obj) {
+		String nameValue;
 		try {
-			return transaction.RetriveDocument(obj, "historialtramites");
+			nameValue = "id";
+			return transaction.RetriveDocument(nameValue, obj, "historialtramites");
 		}catch(Exception e) {
 			throw e;
 		}
@@ -45,7 +47,7 @@ public class GestorHistorialTramite implements GestorMaster {
 		try {
 			HistorialTramite historialTramite = new HistorialTramite();
 			HistorialTramite ht = (HistorialTramite)obj;
-			historialTramite.setTipoTramite(ht.getTipoTramite());
+			historialTramite.setId(ht.getId());
 			
 			transaction.UpdateDocument(obj, "historialtramites", "id",historialTramite);
 		}catch(Exception e) {

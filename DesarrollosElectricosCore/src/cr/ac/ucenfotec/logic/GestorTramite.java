@@ -32,8 +32,10 @@ public class GestorTramite implements GestorMaster {
 	
 	@Override
 	public Object retrive(Object obj) {
+		String nameValue;
 		try {
-			return transaction.RetriveDocument(obj, "tramites");
+			nameValue = "id";
+			return transaction.RetriveDocument(nameValue,obj, "tramites");
 		}catch(Exception e) {
 			throw e;
 		}

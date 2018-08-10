@@ -32,13 +32,15 @@ public class GestorAreaFuncional implements GestorMaster{
 	
 	@Override
 	public Object retrive(Object obj) {
+		String nameValue;
 		try {
-			return transaction.RetriveDocument(obj, "areasfuncionales");
+			nameValue = "id";		
+			return transaction.RetriveDocument(nameValue, obj, "areasfuncionales");
 		}catch(Exception e) {
 			throw e;
 		}
 	}
-	
+
 	@Override
 	public void update(Object obj) {
 		try {

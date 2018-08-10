@@ -33,8 +33,10 @@ public class GestorUsuario implements GestorMaster {
 	
 	@Override
 	public Object retrive(Object obj) {
+		String nameValue;
 		try {
-			return transaction.RetriveDocument(obj, "usuarios");
+			nameValue = "id";
+			return transaction.RetriveDocument(nameValue,obj,"usuarios");
 		}catch(Exception e) {
 			throw e;
 		}

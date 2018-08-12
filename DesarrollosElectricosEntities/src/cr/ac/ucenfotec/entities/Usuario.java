@@ -60,6 +60,55 @@ public class Usuario {
 		this.apellido = apellido;
 	}
 
-
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", areaAsociada=" + areaAsociada + ", clave=" + clave + ", nombre=" + nombre
+				+ ", apellido=" + apellido + "]";
+	}
 	
+	public static class UsuarioBuilder{
+		private String nestedId;
+		private AreaFuncional nestedAreaAsociada;
+		private String nestedClave;
+		private String nestedNombre;
+		private String nestedApellido;
+		
+		public UsuarioBuilder(final String newId, final String newClave, final AreaFuncional newArea, final String newNombre) {
+			this.nestedId = newId;
+			this.nestedClave = newClave;
+			this.nestedAreaAsociada = newArea;
+			this.nestedNombre = newNombre;		
+		}
+
+		public UsuarioBuilder NestedId(String nestedId) {
+			this.nestedId = nestedId;
+			return this;
+		}
+
+		public UsuarioBuilder NestedAreaAsociada(AreaFuncional nestedAreaAsociada) {
+			this.nestedAreaAsociada = nestedAreaAsociada;
+			return this;
+		}
+
+		public UsuarioBuilder NestedClave(String nestedClave) {
+			this.nestedClave = nestedClave;
+			return this;
+		}
+
+		public UsuarioBuilder NestedNombre(String nestedNombre) {
+			this.nestedNombre = nestedNombre;
+			return this;
+		}
+
+		public UsuarioBuilder setNestedApellido(String nestedApellido) {
+			this.nestedApellido = nestedApellido;
+			return this;
+		}
+		
+		public Usuario CreateUsuario() {
+			return new Usuario(nestedId,nestedAreaAsociada,nestedClave,nestedNombre,nestedApellido);
+		}
+			
+	}
+
 }

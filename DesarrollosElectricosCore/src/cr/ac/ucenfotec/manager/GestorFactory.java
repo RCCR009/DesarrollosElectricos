@@ -1,7 +1,6 @@
 package cr.ac.ucenfotec.manager;
 
 import java.util.Optional;
-import DataAccess.MongoDbTransaction;
 
 public class GestorFactory {	
 	

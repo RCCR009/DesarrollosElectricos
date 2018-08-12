@@ -72,4 +72,49 @@ public class Tarea {
 				+ ", usuario=" + usuario + ", fechaFin=" + fechaFin + "]";
 	}
 	
+	public static class TareaBuilder{
+		private AreaFuncional nestedAreaAsignada;
+		private String nestedDetalle;
+		private List<Actividad> nestedActividades;
+		private Usuario nestedUsuario;
+		private LocalDate nestedFechaFin;
+		
+		public TareaBuilder(AreaFuncional nestedAreaAsignada, String nestedDetalle, List<Actividad> nestedActividades) {
+			this.nestedAreaAsignada = nestedAreaAsignada;
+			this.nestedDetalle = nestedDetalle;
+			this.nestedActividades = nestedActividades;
+		}
+
+		public TareaBuilder NestedAreaAsignada(AreaFuncional nestedAreaAsignada) {
+			this.nestedAreaAsignada = nestedAreaAsignada;
+			return this;
+		}
+
+		public TareaBuilder NestedDetalle(String nestedDetalle) {
+			this.nestedDetalle = nestedDetalle;
+			return this;
+		}
+
+		public TareaBuilder NestedActividades(List<Actividad> nestedActividades) {
+			this.nestedActividades = nestedActividades;
+			return this;
+		}
+
+		public TareaBuilder NestedUsuario(Usuario nestedUsuario) {
+			this.nestedUsuario = nestedUsuario;
+			return this;
+		}
+
+		public TareaBuilder NestedFechaFin(LocalDate nestedFechaFin) {
+			this.nestedFechaFin = nestedFechaFin;
+			return this;
+		}
+		
+		public Tarea createTarea() {
+			return new Tarea(nestedAreaAsignada,nestedDetalle,nestedActividades,nestedUsuario,nestedFechaFin);
+
+		}	
+		
+	}
+	
 }

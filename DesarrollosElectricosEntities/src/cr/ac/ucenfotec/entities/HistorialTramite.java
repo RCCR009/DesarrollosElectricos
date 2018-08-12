@@ -92,4 +92,58 @@ public class HistorialTramite {
 				+ fechaFin + "]";
 	}
 	
+	public static class HistorialTramiteBuilder{
+		private int nestedId;
+		private String nestedDetalle;
+		private Usuario nestedUsuarioInicio;
+		private Estado nestedEstado;
+		private List<Tarea> nestedTareaCompletadas;
+		private LocalDate nestedFechaInicio;
+		private LocalDate nestedFechaFin;
+		
+		public HistorialTramiteBuilder() {
+			
+		}
+
+		public HistorialTramiteBuilder NestedId(int nestedId) {
+			this.nestedId = nestedId;
+			return this;
+		}
+
+		public HistorialTramiteBuilder NestedDetalle(String nestedDetalle) {
+			this.nestedDetalle = nestedDetalle;
+			return this;
+		}
+
+		public HistorialTramiteBuilder NestedUsuarioInicio(Usuario nestedUsuarioInicio) {
+			this.nestedUsuarioInicio = nestedUsuarioInicio;
+			return this;
+		}
+
+		public HistorialTramiteBuilder NestedEstado(Estado nestedEstado) {
+			this.nestedEstado = nestedEstado;
+			return this;
+		}
+
+		public HistorialTramiteBuilder NestedTareaCompletadas(List<Tarea> nestedTareaCompletadas) {
+			this.nestedTareaCompletadas = nestedTareaCompletadas;
+			return this;
+		}
+
+		public HistorialTramiteBuilder NestedFechaInicio(LocalDate nestedFechaInicio) {
+			this.nestedFechaInicio = nestedFechaInicio;
+			return this;
+		}
+
+		public HistorialTramiteBuilder NestedFechaFin(LocalDate nestedFechaFin) {
+			this.nestedFechaFin = nestedFechaFin;
+			return this;
+		}
+		
+		public HistorialTramite createHistorialTramite() {
+			return new HistorialTramite(nestedId,nestedDetalle,nestedUsuarioInicio,nestedEstado,nestedTareaCompletadas,nestedFechaInicio,nestedFechaFin);
+		}
+		
+	}
+	
 }

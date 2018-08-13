@@ -1,7 +1,7 @@
 package cr.ac.ucenfotec.ui;
 
 import cr.ac.ucenfotec.entities.*;
-import cr.ac.ucenfotec.logic.*;
+import cr.ac.ucenfotec.manager.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

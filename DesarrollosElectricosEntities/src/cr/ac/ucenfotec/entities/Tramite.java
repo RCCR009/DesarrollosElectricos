@@ -13,7 +13,7 @@ public class Tramite {
 		tareas = new ArrayList<>();
 	}
 
-	public Tramite(int id, String detalle, ArrayList<Tarea> tareas, int numero) {
+	public Tramite(int id, String detalle, ArrayList<Tarea> tareas) {
 		super();
 		this.id = id;
 		this.detalle = detalle;

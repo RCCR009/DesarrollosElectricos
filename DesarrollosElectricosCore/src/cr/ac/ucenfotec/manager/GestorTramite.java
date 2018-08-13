@@ -33,9 +33,12 @@ public class GestorTramite extends GestorMaster {
 	@Override
 	public Object retrive(Object obj) {
 		String nameValue;
+		Integer value;
+		Tramite tramite = (Tramite)obj;
 		try {
 			nameValue = "id";
-			return transaction.RetriveDocument(nameValue,obj, "tramites");
+			value = tramite.getId();
+			return transaction.RetriveDocument(obj, "tramites",nameValue,value);
 		}catch(Exception e) {
 			throw e;
 		}
@@ -43,16 +46,17 @@ public class GestorTramite extends GestorMaster {
 	
 	@Override
 	public void update(Object obj) {
+		String idName;
+		Integer value;
+		Tramite t = (Tramite)obj;
 		try {
-			Tramite tramite = new Tramite();
-			Tramite t = (Tramite)obj;
-			tramite.setId(t.getId());
+			idName = "id";
+			value = t.getId();
 			
-			transaction.UpdateDocument(obj, "tramites", "id",tramite);
+			transaction.UpdateDocument(obj, "tramites",idName,value);
 		}catch(Exception e) {
 			throw e;
-		}
-		
+		}	
 	}
 	
 	@Override

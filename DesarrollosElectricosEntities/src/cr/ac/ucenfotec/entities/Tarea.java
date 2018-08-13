@@ -6,10 +6,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class Tarea {
-	private int id;
+	private AreaFuncional areaAsignada;
 	private String detalle;
-	private ArrayList<Actividad> actividades;
-	private int numero;
+	private List<Actividad> actividades;
 	private Usuario usuario;
 	private LocalDate fechaFin;
 	
@@ -17,22 +16,22 @@ public class Tarea {
 		actividades = new ArrayList<>();
 	}
 
-	public Tarea(int id, String detalle, ArrayList<Actividad> actividades, int numero, Usuario usuario, LocalDate fechaFin) {
+	public Tarea(AreaFuncional areaAsignada, String detalle, List<Actividad> actividades, Usuario usuario,
+			LocalDate fechaFin) {
 		super();
-		this.id = id;
+		this.areaAsignada = areaAsignada;
 		this.detalle = detalle;
 		this.actividades = actividades;
-		this.numero = numero;
 		this.usuario = usuario;
 		this.fechaFin = fechaFin;
 	}
 
-	public int getId() {
-		return id;
+	public AreaFuncional getAreaAsignada() {
+		return areaAsignada;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setAreaAsignada(AreaFuncional areaAsignada) {
+		this.areaAsignada = areaAsignada;
 	}
 
 	public String getDetalle() {
@@ -43,20 +42,12 @@ public class Tarea {
 		this.detalle = detalle;
 	}
 
-	public ArrayList<Actividad> getActividades() {
-		return (ArrayList<Actividad>) Collections.unmodifiableList(actividades);
+	public List<Actividad> getActividades() {
+		return Collections.unmodifiableList(actividades);
 	}
 
-	public void setActividades(ArrayList<Actividad> actividades) {
+	public void setActividades(List<Actividad> actividades) {
 		this.actividades = actividades;
-	}
-
-	public int getNumero() {
-		return numero;
-	}
-
-	public void setNumero(int numero) {
-		this.numero = numero;
 	}
 
 	public Usuario getUsuario() {
@@ -77,8 +68,53 @@ public class Tarea {
 
 	@Override
 	public String toString() {
-		return "Tarea [id=" + id + ", detalle=" + detalle + ", actividades=" + actividades + ", numero=" + numero
+		return "Tarea [areaAsignada=" + areaAsignada + ", detalle=" + detalle + ", actividades=" + actividades
 				+ ", usuario=" + usuario + ", fechaFin=" + fechaFin + "]";
+	}
+	
+	public static class TareaBuilder{
+		private AreaFuncional nestedAreaAsignada;
+		private String nestedDetalle;
+		private List<Actividad> nestedActividades;
+		private Usuario nestedUsuario;
+		private LocalDate nestedFechaFin;
+		
+		public TareaBuilder(AreaFuncional nestedAreaAsignada, String nestedDetalle, List<Actividad> nestedActividades) {
+			this.nestedAreaAsignada = nestedAreaAsignada;
+			this.nestedDetalle = nestedDetalle;
+			this.nestedActividades = nestedActividades;
+		}
+
+		public TareaBuilder NestedAreaAsignada(AreaFuncional nestedAreaAsignada) {
+			this.nestedAreaAsignada = nestedAreaAsignada;
+			return this;
+		}
+
+		public TareaBuilder NestedDetalle(String nestedDetalle) {
+			this.nestedDetalle = nestedDetalle;
+			return this;
+		}
+
+		public TareaBuilder NestedActividades(List<Actividad> nestedActividades) {
+			this.nestedActividades = nestedActividades;
+			return this;
+		}
+
+		public TareaBuilder NestedUsuario(Usuario nestedUsuario) {
+			this.nestedUsuario = nestedUsuario;
+			return this;
+		}
+
+		public TareaBuilder NestedFechaFin(LocalDate nestedFechaFin) {
+			this.nestedFechaFin = nestedFechaFin;
+			return this;
+		}
+		
+		public Tarea createTarea() {
+			return new Tarea(nestedAreaAsignada,nestedDetalle,nestedActividades,nestedUsuario,nestedFechaFin);
+
+		}	
+		
 	}
 	
 }

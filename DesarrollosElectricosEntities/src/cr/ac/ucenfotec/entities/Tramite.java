@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Tramite {
 	private int id;
-	private int numero;
 	private String detalle;
 	private List<Tarea> tareas;
 	
@@ -14,12 +13,11 @@ public class Tramite {
 		tareas = new ArrayList<>();
 	}
 
-	public Tramite(int id, String detalle, ArrayList<Tarea> tareas, int numero) {
+	public Tramite(int id, String detalle, ArrayList<Tarea> tareas) {
 		super();
 		this.id = id;
 		this.detalle = detalle;
 		this.tareas = tareas;
-		this.numero = numero;
 	}
 
 	public int getId() {
@@ -44,14 +42,6 @@ public class Tramite {
 
 	public void setTareas(ArrayList<Tarea> tareas) {
 		this.tareas = tareas;
-	}
-
-	public int getNumero() {
-		return numero;
-	}
-
-	public void setNumero(int numero) {
-		this.numero = numero;
 	}
 
 	@Override

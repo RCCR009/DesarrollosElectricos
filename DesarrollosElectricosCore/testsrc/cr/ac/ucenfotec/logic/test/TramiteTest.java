@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Test;
 
@@ -13,7 +12,7 @@ import cr.ac.ucenfotec.entities.AreaFuncional;
 import cr.ac.ucenfotec.entities.Tarea;
 import cr.ac.ucenfotec.entities.Tramite;
 import cr.ac.ucenfotec.entities.Usuario;
-import cr.ac.ucenfotec.logic.GestorTramite;
+import cr.ac.ucenfotec.manager.GestorTramite;
 
 public class TramiteTest {
 
@@ -24,24 +23,23 @@ public class TramiteTest {
 		LocalDate today = LocalDate.now();
 		
 		ArrayList<Actividad> actividades = new ArrayList<Actividad>();
-		Actividad actividad1 = new Actividad (1,"un prueba","la respuesta de la prueba");
+		Actividad actividad1 = new Actividad ("un prueba","la respuesta de la prueba");
 		
 		actividades.add(actividad1);
-		
+		AreaFuncional area = new AreaFuncional("1","areaPrueba");
 	
 		
 		
 		
-		AreaFuncional area1 = new AreaFuncional(1,"usuario");
+		AreaFuncional area1 = new AreaFuncional("1","usuario");
 		
-		Usuario usuario1 = new Usuario("1",1,"123erb","Steve","Terrence");
+		Usuario usuario1 = new Usuario("1",area1,"123erb","Steve","Terrence");
 		
-		
-		Tarea tarea1 = new Tarea(1,"esto es una prueba",actividades,1,usuario1,today);
+		Tarea tarea1 = new Tarea(area,"esto es una prueba",actividades,usuario1,today);
 		ArrayList<Tarea> tareas = new ArrayList<Tarea>();
 		tareas.add(tarea1);
 		
-		Tramite tramite1 = new Tramite(1,"esto es una prueba",tareas,1);
+		Tramite tramite1 = new Tramite(1,"esto es una prueba",tareas);
 		
 		
 		
@@ -60,24 +58,24 @@ public class TramiteTest {
 	public void test2() {
 		
 		
-		AreaFuncional area2 = new AreaFuncional(2,"staff");
+		AreaFuncional area2 = new AreaFuncional("2","staff");
 		
-		Usuario usuario2 = new Usuario("2",1,"123erb","John","Clay");
+		Usuario usuario2 = new Usuario("2",area2,"123erb","John","Clay");
 		
-		assertEquals(1,usuario2.getAreaAsociada());
+		assertEquals(area2,usuario2.getAreaAsociada());
 		
 	}
 	
 	@Test
 	public void test3() {
 	
-AreaFuncional area1 = new AreaFuncional(1,"usuario");
+AreaFuncional area1 = new AreaFuncional("1","usuario");
 		
-		Usuario usuario1 = new Usuario("1",1,"123erb","Steve","Terrence");
+		Usuario usuario1 = new Usuario("1",area1,"123erb","Steve","Terrence");
 		
-		AreaFuncional area2 = new AreaFuncional(2,"staff");
+		AreaFuncional area2 = new AreaFuncional("2","staff");
 		
-		Usuario usuario2 = new Usuario("2",1,"123erb","John","Clay");
+		Usuario usuario2 = new Usuario("2",area2,"123erb","John","Clay");
 		
 		assertNotSame(usuario1, usuario2);
 	}
@@ -87,16 +85,17 @@ AreaFuncional area1 = new AreaFuncional(1,"usuario");
 LocalDate today = LocalDate.now();
 		
 		ArrayList<Actividad> actividades = new ArrayList<Actividad>();
-		Actividad actividad1 = new Actividad (1,"un prueba","la respuesta de la prueba");
+		Actividad actividad1 = new Actividad ("un prueba","la respuesta de la prueba");
+		AreaFuncional area = new AreaFuncional("1","areaPrueba");
 		
 		actividades.add(actividad1);
-		Usuario usuario1 = new Usuario("1",1,"123erb","Steve","Terrence");
+		Usuario usuario1 = new Usuario("1",area,"123erb","Steve","Terrence");
 		
-		Tarea tarea1 = new Tarea(1,"esto es una prueba",actividades,1,usuario1,today);
+		Tarea tarea1 = new Tarea(area,"esto es una prueba",actividades,usuario1,today);
 		ArrayList<Tarea> tareas = new ArrayList<Tarea>();
 		tareas.add(tarea1);
 		
-		Tramite tramite1 = new Tramite(1,"esto es una prueba",tareas,1);
+		Tramite tramite1 = new Tramite(1,"esto es una prueba",tareas);
 		
 		
 	}
@@ -105,21 +104,21 @@ LocalDate today = LocalDate.now();
 public void test5() {
 	LocalDate today = LocalDate.now();
 	
-	AreaFuncional area1 = new AreaFuncional(1,"usuario");
+	AreaFuncional area1 = new AreaFuncional("1","usuario");
 	
-	Usuario usuario1 = new Usuario("1",1,"123erb","Steve","Terrence");
+	Usuario usuario1 = new Usuario("1",area1,"123erb","Steve","Terrence");
 	
 
 	ArrayList<Actividad> actividades = new ArrayList<Actividad>();
-	Actividad actividad1 = new Actividad (1,"un prueba","la respuesta de la prueba");
-	Actividad actividad2 = new Actividad (1,"una segunda  prueba","la respuesta de la prueba dos");
+	Actividad actividad1 = new Actividad ("un prueba","la respuesta de la prueba");
+	Actividad actividad2 = new Actividad ("una segunda  prueba","la respuesta de la prueba dos");
 	
 	actividades.add(actividad1);
 	actividades.add(actividad2);
 	
 	GestorTramite gestorT = new GestorTramite();
-	
-	Tarea tarea1 = new Tarea(1,"esto es una prueba",actividades,1,usuario1,today);
+	AreaFuncional area2 = new AreaFuncional("2","staff");
+	Tarea tarea1 = new Tarea(area2,"esto es una prueba",actividades,usuario1,today);
 	
 	 //Assert.assertArrayEquals(actividades,tarea1.getActividades());
 	

@@ -32,9 +32,12 @@ public class GestorAreaFuncional extends GestorMaster{
 	@Override
 	public Object retrive(Object obj) {
 		String nameValue;
+		String value;
+		AreaFuncional areaFuncional = (AreaFuncional)obj;
 		try {
-			nameValue = "id";		
-			return transaction.RetriveDocument(nameValue, obj, "areasfuncionales");
+			nameValue = "id";	
+			value = areaFuncional.getId();
+			return transaction.RetriveDocument(obj, "areasfuncionales",nameValue,value);
 		}catch(Exception e) {
 			throw e;
 		}
@@ -42,12 +45,14 @@ public class GestorAreaFuncional extends GestorMaster{
 
 	@Override
 	public void update(Object obj) {
+		String idName;
+		String areaIdValue;
+		AreaFuncional aF = (AreaFuncional)obj;
 		try {
-			AreaFuncional areaFuncional = new AreaFuncional();
-			AreaFuncional af = (AreaFuncional)obj;
-			areaFuncional.setId(af.getId()); 
+			idName = "id";
+			areaIdValue = aF.getId(); 
 			
-			transaction.UpdateDocument(obj, "areasfuncionales","id",areaFuncional);
+			transaction.UpdateDocument(obj,"areasfuncionales",idName,areaIdValue);
 		}catch(Exception e) {
 			throw e;
 		}	

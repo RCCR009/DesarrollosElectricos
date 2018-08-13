@@ -39,7 +39,7 @@ public class TramiteTest {
 		ArrayList<Tarea> tareas = new ArrayList<Tarea>();
 		tareas.add(tarea1);
 		
-		Tramite tramite1 = new Tramite(1,"esto es una prueba",tareas,1);
+		Tramite tramite1 = new Tramite(1,"esto es una prueba",tareas);
 		
 		
 		
@@ -62,7 +62,7 @@ public class TramiteTest {
 		
 		Usuario usuario2 = new Usuario("2",area2,"123erb","John","Clay");
 		
-		assertEquals(1,usuario2.getAreaAsociada());
+		assertEquals(area2,usuario2.getAreaAsociada());
 		
 	}
 	
@@ -95,7 +95,7 @@ LocalDate today = LocalDate.now();
 		ArrayList<Tarea> tareas = new ArrayList<Tarea>();
 		tareas.add(tarea1);
 		
-		Tramite tramite1 = new Tramite(1,"esto es una prueba",tareas,1);
+		Tramite tramite1 = new Tramite(1,"esto es una prueba",tareas);
 		
 		
 	}

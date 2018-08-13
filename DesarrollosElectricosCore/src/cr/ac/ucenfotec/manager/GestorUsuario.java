@@ -34,9 +34,12 @@ public class GestorUsuario extends GestorMaster {
 	@Override
 	public Object retrive(Object obj) {
 		String nameValue;
+		String value;
+		Usuario usuario = (Usuario)obj;
 		try {
 			nameValue = "id";
-			return transaction.RetriveDocument(nameValue,obj,"usuarios");
+			value = usuario.getId();
+			return transaction.RetriveDocument(obj,"usuarios",nameValue,value);
 		}catch(Exception e) {
 			throw e;
 		}
@@ -44,12 +47,14 @@ public class GestorUsuario extends GestorMaster {
 	
 	@Override
 	public void update(Object obj) {
+		String idName;
+		String value;
+		Usuario u = (Usuario)obj;
 		try {
-			Usuario usuario = new Usuario();
-			Usuario u = (Usuario)obj;
-			usuario.setId(u.getId());
+			idName = "id";
+			value = u.getId();
 			
-			transaction.UpdateDocument(obj, "usuarios", "id",usuario);
+			transaction.UpdateDocument(obj, "usuarios",idName,value);
 		}catch(Exception e) {
 			throw e;
 		}

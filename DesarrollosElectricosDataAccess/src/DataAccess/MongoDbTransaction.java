@@ -30,37 +30,33 @@ public class MongoDbTransaction {
 	
 	public void InsertDocuement(Object obj, String collectionName)
 	{	
-		MongoCollection<Document> collection = MongoConnection.getMongoDataBase().getCollection(collectionName);//gson docuemten que espera un json
-		
+		MongoCollection<Document> collection = getCollection(collectionName);
 		Gson gson = new Gson();
-	    
 		String result = gson.toJson(obj);	      
 	    Document dbObject = gson.fromJson(result, Document.class);		    
 	    collection.insertOne(dbObject);// crea un id unico ui
 	}
+
+	
 	
 	public ArrayList<Object> GetData(Object obj, String collectionName) 
 	{
 		ArrayList<Object> results  = new ArrayList<Object>();
-		MongoCollection<Document> collection = MongoConnection.getMongoDataBase().getCollection(collectionName);
-		
+		MongoCollection<Document> collection = getCollection(collectionName);	
 		List<Document> documents = (List<Document>) collection.find().into(
 				new ArrayList<Document>());
 		
 		Gson gson = new Gson();
-		
-		for(Document document : documents){
-			
+		for(Document document : documents){		
 			String result = gson.toJson(document);			
-			
-			results.add((Object)gson.fromJson(result, obj.getClass()));
+			results.add(gson.fromJson(result, obj.getClass()));
         }
 		
 		return results;
 	}
 	
 	public void UpdateDocument(Object obj, String collectionName, String nameValue,Object value) {
-		MongoCollection<Document> collection = MongoConnection.getMongoDataBase().getCollection(collectionName);
+		MongoCollection<Document> collection = getCollection(collectionName);
 		
 		BasicDBObject parameter = new BasicDBObject(nameValue,value);		
 		Gson gson = new Gson();
@@ -74,29 +70,34 @@ public class MongoDbTransaction {
 		
 	}
 	
-	public Object RetriveDocument(String nameValue,Object obj, String collectionName) {
+	public Object RetriveDocument(Object obj, String collectionName, String nameValue,Object value) {
 		Object myObj = new Object();
 		Gson gson = new Gson();
-		MongoCollection<Document> collection = MongoConnection.getMongoDataBase().getCollection(collectionName);
+		MongoCollection<Document> collection = getCollection(collectionName);
 		
-		Document myDoc = collection.find(Filters.eq(nameValue,obj)).first();		
+		Document myDoc = collection.find(Filters.eq(nameValue,value)).first();		
 		String result = gson.toJson(myDoc);			
-		myObj = (gson.fromJson(result, obj.getClass()));
+		myObj = gson.fromJson(result, obj.getClass());
 
 		return myObj;	
 	}
 	
 	public void DeleteDocument(Object obj, String collectionName) {
-		MongoCollection<Document> collection = MongoConnection.getMongoDataBase().getCollection(collectionName);
+		MongoCollection<Document> collection = getCollection(collectionName);
 		Gson gson = new Gson(); 
-		String jsonObject = gson.toJson(obj);	      
-	    Document dbObject = gson.fromJson(jsonObject, Document.class);
+		String result = gson.toJson(obj);	      
+	    Document dbObject = gson.fromJson(result, Document.class);
 
 	    collection.deleteOne(dbObject);
 	}
 	
 	public void closeConnection() {
 		MongoConnection.getMongo().close();
+	}
+	
+	private MongoCollection<Document> getCollection(String collectionName) {
+		MongoCollection<Document> collection = MongoConnection.getMongoDataBase().getCollection(collectionName);
+		return collection;
 	}
 	
 }

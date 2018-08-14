@@ -1,8 +1,12 @@
 package cr.ac.ucenfotec.manager;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import DataAccess.MongoDbTransaction;
+import cr.ac.cenfotec.encryption.AlgorithmName;
+import cr.ac.cenfotec.encryption.EncryptionManager;
 import cr.ac.ucenfotec.entities.Usuario;
 
 public class GestorUsuario extends GestorMaster {
@@ -14,9 +18,16 @@ public class GestorUsuario extends GestorMaster {
 	@Override
 	public void create(Object obj) {
 		try {
-			transaction.InsertDocuement(obj, "usuarios");	
+			Usuario usuario = (Usuario)obj;
+			Usuario u = usuario;	
+			usuario.setClave(encryptPassword(u.getClave()));
+			transaction.InsertDocuement(usuario, "usuarios");	
 		}catch(Exception e) {
-			throw e;
+			Logger logger = Logger.getLogger("cr.ac.ucenfotec.manager");
+		    StackTraceElement elements[] = e.getStackTrace();
+		    for (int i = 0, n = elements.length; i < n; i++) {
+		        logger.log(Level.WARNING, elements[i].getMethodName());
+		    }
 		}
 	}
 	
@@ -66,6 +77,13 @@ public class GestorUsuario extends GestorMaster {
 		}catch(Exception e) {
 			throw e;
 		}
+	}
+	
+	private String encryptPassword(String clave) throws Exception {
+		EncryptionManager encryption = new EncryptionManager();
+		String encryptedPassword;
+		encryptedPassword = encryption.encryptMessage(clave, "symmetric", AlgorithmName.AES);
+		return encryptedPassword;
 	}
 
 }

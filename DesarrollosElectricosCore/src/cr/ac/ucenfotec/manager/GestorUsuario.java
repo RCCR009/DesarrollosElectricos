@@ -7,8 +7,6 @@ import cr.ac.ucenfotec.entities.Usuario;
 
 public class GestorUsuario extends GestorMaster {
 	
-	MongoDbTransaction transaction;
-	
 	public GestorUsuario() {
 		transaction = MongoDbTransaction.GetInstance();
 	}

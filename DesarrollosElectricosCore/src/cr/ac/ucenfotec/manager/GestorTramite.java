@@ -6,8 +6,6 @@ import cr.ac.ucenfotec.entities.Tramite;
 
 public class GestorTramite extends GestorMaster {
 	
-	MongoDbTransaction transaction;
-	
 	public GestorTramite(){
 		transaction = MongoDbTransaction.GetInstance();
 	}

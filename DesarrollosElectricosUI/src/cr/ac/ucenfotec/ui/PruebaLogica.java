@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.time.LocalDate;
 
 public class PruebaLogica {
 	
@@ -129,102 +130,101 @@ public class PruebaLogica {
         }
     }
 	
-//	public static void crearTramite() {
-//		String detalleTramite, nombreTarea, nombreArea, detalle;
-//		int numero;
-//		Tramite tramite = new Tramite();
-//		
-//		Optional<GestorMaster> GTR = GestorFactory.createGestor(GestorType.TRAMITE);
-//		Optional<GestorMaster> GTA = GestorFactory.createGestor(GestorType.TAREA);
-//		Optional<GestorMaster> GA = GestorFactory.createGestor(GestorType.ACTIVIDAD);
-//		Optional<GestorMaster> GAF = GestorFactory.createGestor(GestorType.AREAFUNCIONAL);
-//		ArrayList<Tramite> listTramite = new ArrayList<>(); 
-//		ArrayList<Tarea> listTarea = new ArrayList<>();
-//		ArrayList<Actividad> listActividad = new ArrayList<>();
-//		
-//		try {			
-//			out.println("\nDeme id Tramite");
-//			int idTramite = Integer.parseInt(in.readLine());
-//			tramite.setId(idTramite);
-//			
-//			do {
-//				out.println("\nDeme detalle del proyecto o tramite");
-//				detalleTramite = in.readLine();			
-//			} while(detalleTramite.isEmpty());
-//			
-//			tramite.setDetalle(detalleTramite);
-//			
-//			int terminarTarea;
-//			do {
-//				Tarea tarea = new Tarea();
-//				AreaFuncional area = new AreaFuncional();
-//				
-//				do {
-//					out.println("\nDeme detalle de la tarea");
-//					nombreTarea = in.readLine();					
-//				} while(nombreTarea.isEmpty());				
-//				
-//				out.println("\nDeme id de la tarea");
-//				int idTarea = Integer.parseInt(in.readLine());
-//				out.println("\nDeme numero de tarea");
-//				numero = Integer.parseInt(in.readLine());
-//				
-//				out.println("\nDeme id del area funcional");
-//				int idArea = Integer.parseInt(in.readLine());	
-//				
-//				do {
-//					out.println("\nDeme nombre del area funcional");
-//					nombreArea = in.readLine();					
-//				} while(nombreArea.isEmpty());
-//				
-//				tarea.setId(idTarea);
-//				tarea.setNumero(numero);
-//				tarea.setDetalle(nombreTarea);
-//				
-//				area.setId(idArea);
-//				area.setNombre(nombreArea);
-//				area.setTareaAsociada(idTarea);
-//				GAF.get().create(area);
-//			
-//				int terminarActividad;
-//				do {
-//					Actividad actividad = new Actividad();
-//					
-//					out.println("\nDeme id de la actividad");
-//					int idActividad = Integer.parseInt(in.readLine());
-//					
-//					do {
-//						out.println("\nDeme detalle de la actividad");
-//						detalle = in.readLine();					
-//					}while(detalle.isEmpty());
-//					
-//					actividad.setId(idActividad);
-//					actividad.setDetalle(detalle);
-//					
-//					listActividad.add(actividad);
-//					
-//					out.println("\n0.SEGUIR / 1.SALIR");
-//					terminarActividad = Integer.parseInt(in.readLine());
-//					
-//				}while(terminarActividad == 0);
-//				
-//				tarea.setActividades(listActividad);
-//				listTarea.add(tarea);
-//				
-//				out.println("\n0.Mas tareas / 1.SALIR");
-//				terminarTarea = Integer.parseInt(in.readLine());
-//				
-//			}while(terminarTarea == 0);
-//			
-//			tramite.setTareas(listTarea);
-//			GTR.get().create(tramite);
-//			
-//        } catch (Exception e) {
-//            out.println(e.getMessage());
-//        }
-//	}
-//	
-//	public static void listarTramite() {
+	public static void crearTramite() {
+		String detalleTramite, nombreTarea, nombreArea, detalle;
+		int numero;
+		Tramite tramite = new Tramite();
+		
+		Optional<GestorMaster> GTR = GestorFactory.createGestor(GestorType.TRAMITE);
+		Optional<GestorMaster> GTA = GestorFactory.createGestor(GestorType.TAREA);
+		Optional<GestorMaster> GA = GestorFactory.createGestor(GestorType.ACTIVIDAD);
+		Optional<GestorMaster> GAF = GestorFactory.createGestor(GestorType.AREAFUNCIONAL);
+		ArrayList<Tramite> listTramite = new ArrayList<>(); 
+		ArrayList<Tarea> listTarea = new ArrayList<>();
+		ArrayList<Actividad> listActividad = new ArrayList<>();
+		
+		try {			
+			out.println("\nDeme id Tramite");
+			int idTramite = Integer.parseInt(in.readLine());
+			tramite.setId(idTramite);
+			
+			do {
+				out.println("\nDeme detalle del proyecto o tramite");
+				detalleTramite = in.readLine();			
+			} while(detalleTramite.isEmpty());
+			
+			tramite.setDetalle(detalleTramite);
+			
+			int terminarTarea;
+			do {
+				Tarea tarea = new Tarea();
+				AreaFuncional area = new AreaFuncional();
+				
+				do {
+					out.println("\nDeme detalle de la tarea");
+					nombreTarea = in.readLine();					
+				} while(nombreTarea.isEmpty());				
+				
+				out.println("\nDeme el id de la tarea");
+				int idTarea = Integer.parseInt(in.readLine());		
+				
+				
+				out.println("\nDeme id del area funcional");
+				String idArea = in.readLine();	
+				
+				do {
+					out.println("\nDeme nombre del area funcional");
+					nombreArea = in.readLine();					
+				} while(nombreArea.isEmpty());
+				
+				
+			
+				tarea.setDetalle(nombreTarea);
+				
+				area.setId(idArea);
+				area.setNombre(nombreArea);
+				
+				GAF.get().create(area);
+			
+				int terminarActividad;
+				do {
+					Actividad actividad = new Actividad();
+					
+					out.println("\nDeme id de la actividad");
+					String idActividad = in.readLine();
+					
+					do {
+						out.println("\nDeme detalle de la actividad");
+						detalle = in.readLine();					
+					}while(detalle.isEmpty());
+					
+					
+					actividad.setDetalle(detalle);
+					
+					listActividad.add(actividad);
+					
+					out.println("\n0.SEGUIR / 1.SALIR");
+					terminarActividad = Integer.parseInt(in.readLine());
+					
+				}while(terminarActividad == 0);
+				
+				tarea.setActividades(listActividad);
+				listTarea.add(tarea);
+				
+				out.println("\n0.Mas tareas / 1.SALIR");
+				terminarTarea = Integer.parseInt(in.readLine());
+				
+			}while(terminarTarea == 0);
+			
+			tramite.setTareas(listTarea);
+			GTR.get().create(tramite);
+			
+        } catch (Exception e) {
+            out.println(e.getMessage());
+        }
+	}
+	
+	public static void listarTramite() {
 //		GestorTramite GTR = new GestorTramite();
 //		GestorTarea GTA = new GestorTarea();
 //		GestorActividad GA = new GestorActividad();
@@ -275,8 +275,8 @@ public class PruebaLogica {
 //        } catch (Exception e) {
 //            out.println(e.getMessage());
 //        }
-//			
-//	}
+			
+	}
 	
 	
 	

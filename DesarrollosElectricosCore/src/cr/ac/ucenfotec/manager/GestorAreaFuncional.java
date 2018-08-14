@@ -5,7 +5,6 @@ import DataAccess.MongoDbTransaction;
 import cr.ac.ucenfotec.entities.AreaFuncional;
 
 public class GestorAreaFuncional extends GestorMaster{
-
 	
 	public GestorAreaFuncional(){
 		transaction = MongoDbTransaction.GetInstance();

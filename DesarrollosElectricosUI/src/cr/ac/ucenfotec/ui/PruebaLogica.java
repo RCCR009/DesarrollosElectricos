@@ -225,12 +225,13 @@ public class PruebaLogica {
 	}
 	
 	public static void listarTramite() {
-//		GestorTramite GTR = new GestorTramite();
-//		GestorTarea GTA = new GestorTarea();
-//		GestorActividad GA = new GestorActividad();
-//		ArrayList<BaseEntity> listTramite = new ArrayList<>(); 
-//		ArrayList<BaseEntity> listTarea = new ArrayList<>();
-//		ArrayList<BaseEntity> listActividad = new ArrayList<>();
+		Optional<GestorMaster> GTR = GestorFactory.createGestor(GestorType.TRAMITE);
+		Optional<GestorMaster> GTA = GestorFactory.createGestor(GestorType.TAREA);
+		Optional<GestorMaster> GA = GestorFactory.createGestor(GestorType.ACTIVIDAD);
+		Optional<GestorMaster> GAF = GestorFactory.createGestor(GestorType.AREAFUNCIONAL);
+		ArrayList<Tramite> listTramite = new ArrayList<>(); 
+		ArrayList<Tarea> listTarea = new ArrayList<>();
+		ArrayList<Actividad> listActividad = new ArrayList<>();
 //		try {
 //			
 //			listTramite = GTR.RetriveAll();
@@ -266,7 +267,7 @@ public class PruebaLogica {
 //				}		
 //				
 //			}
-//			
+			
 //		} catch (java.lang.ClassNotFoundException e) {
 //            out.println(e.getMessage());
 //        } catch (SQLException e) {

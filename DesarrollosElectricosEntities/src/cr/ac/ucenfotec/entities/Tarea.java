@@ -11,6 +11,7 @@ public class Tarea {
 	private List<Actividad> actividades;
 	private Usuario usuario;
 	private LocalDate fechaFin;
+
 	
 	public Tarea() {
 		actividades = new ArrayList<>();

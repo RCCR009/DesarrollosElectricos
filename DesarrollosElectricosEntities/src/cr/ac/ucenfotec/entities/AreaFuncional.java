@@ -1,35 +1,25 @@
 package cr.ac.ucenfotec.entities;
 
 public class AreaFuncional {
-	private int id;
-	private Tarea TareaAsociada;
+	private String id;
 	private String nombre;
 	
 	public AreaFuncional() {
 		
 	}
 	
-	public AreaFuncional(int id, int tareaAsociada, String nombre) {
+	public AreaFuncional(String id, String nombre) {
 		super();
 		this.id = id;
-		this.TareaAsociada.setId(tareaAsociada);
 		this.nombre = nombre;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
-	}
-
-	public Tarea getTareaAsociada() {
-		return TareaAsociada;
-	}
-
-	public void setTareaAsociada(int tareaAsociada) {
-		TareaAsociada.setId(tareaAsociada);
 	}
 
 	public String getNombre() {
@@ -42,7 +32,7 @@ public class AreaFuncional {
 
 	@Override
 	public String toString() {
-		return "AreaFuncional [id=" + id + ", TareaAsociada=" + TareaAsociada + ", nombre=" + nombre + "]";
+		return "AreaFuncional [id=" + id + ", nombre=" + nombre + "]";
 	}
 
 }

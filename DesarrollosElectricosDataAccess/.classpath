@@ -4,7 +4,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/dev/java/cenfotec/jar/gson-2.2.2.jar"/>
 	<classpathentry kind="lib" path="C:/dev/java/cenfotec/jar/hamcrest-core-1.3.jar"/>
-	<classpathentry kind="lib" path="C:/dev/java/cenfotec/jar/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="C:/dev/java/cenfotec/jar/junit-4.12.jar"/>git
 	<classpathentry kind="lib" path="C:/dev/java/cenfotec/jar/mongo-java-driver-3.7.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
